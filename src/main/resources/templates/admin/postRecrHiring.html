@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"th:replace="admin/base::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>this is home page</title>
+</head>
+<body>
+	<section >
+	  <script src="/js/hr.js/adminpostRecrHiring.js"></script>
+  
+	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+     <div class="container">   
+        <div class="row">
+           <div class="col-md-9 offset-md-2">
+              <div class="my-card mt-1">
+            
+             
+                
+                <div id="postResultDiv" align="center"></div>
+                
+                <form id="adminsaveJobDetails" name="adminsaveJobDetails" method="post"  enctype="multipart/form-data">
+                
+                   <h1 class="font-weight-bold"  style="text-align:center;padding:30px ;background-color:grey;text-shadow: 2px 2px 4px #000000;text-shadow: 2px 2px 4px rgb(255, 255, 255);">Add Jobs</h1><hr>
+                  
+                  <!--Comapany Name field -->
+                  
+                  <div class="form-group row">
+                    <label for="companyName"  class="col-3 col-form-label">Company name:</label>
+                    <div class="col-12">
+                    <input 
+                    name = "companyName"
+                    type="text" 
+                    class="form-control" 
+                    id="companyName" 
+                    aria-describedby="emailHelp"
+                    placeholder="Enter here"
+                    required
+                    />
+                    </div>
+                  </div>
+                
+                <br>
+                
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">Skills :</label>
+					 <div class="col-12 custom-file">
+						<select id="jobSkills"  name="jobSkills" class = "choices-multiple-remove-button" placeholder="Select Skills" multiple>
+                          <option value="HTML">HTML</option>
+                          <option value="Jquery">Jquery</option>
+                          <option value="CSS">CSS</option>
+                          <option value="Java">Java</option>
+                          <option value="C">C</option>
+                          <option value="C++">C++</option>
+                          <option value="Spring Boot">Spring Boot</option>
+                          <option value="Javascript">Javascript</option>
+                          <option value="Angular">Angular</option>
+                          <option value="Python">Python</option>
+                          <option value="SQL">SQL</option>
+                          <option value="Hibernate">Hibernate</option>
+                          <option value="Spring">Spring</option>
+                        </select> 
+                    </div>
+					</div>
+                
+                
+                <br>
+                 <!-- Date field -->
+                  
+                  <div class="form-group row">
+                    <label for="date" class="col-3 col-form-label">Date of Post:</label>
+                    <div class="col-12">
+                    <input 
+                    name="date"
+                    class="form-control" 
+                    type="date"
+                    id="date"
+                    required
+                    />
+                    </div>
+                  </div>
+                    
+                    <br>
+       
+                  <!--city field -->
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-3" for="country">Select City:</label>
+                            <div class="col-12">
+                            <select class="form-control"  name="city" id="city" required>
+                             <option value="">None</option>
+                              <option value="ddun">Dehradun</option>
+                              <option value="gurgaon">Gurgaon</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="mumbai">Mumbai</option>
+                               <option value="chennai">Chennai</option>
+                               <option value="raipur">Raipur</option>
+                            </select>
+                            </div>
+                    </div><br>
+                
+                 <div class="form-group row">
+                  <label for="description" class="col-3 col-form-label">Description:</label>
+                  <div class="col-12">
+                  <textarea 
+                  name = "description" 
+                  placeholder="Enter description !!"  
+                  rows="6" 
+                  id="description"
+                  class="form-control"></textarea></div>
+                </div>
+      
+               <br>
+                  
+      
+             <br>       
+          
+                <div class="container text-center">
+                <button type="submit" class="btn bg-primary  text-white">submit</button>
+                <button type="reset" class="btn btn-warning  text-white">Reset</button>
+                </div>
+               
+            </form>
+                
+            </div>
+            </div>
+            </div>
+         </div>
+         
+          <!-- for select multiple skills -->
+                <script>
+                      var multipleCancelButton = new Choices('.choices-multiple-remove-button', {
+                      removeItemButton: true,
+                      });
+                </script>
+         
+   </section>
+    
+</body>
+</html>

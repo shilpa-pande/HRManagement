@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="hr/base::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>this is home page</title>
+</head>
+<body>
+	<section>
+	<script src="/js/hr.js/viewcompDetails.js"></script>
+	
+	<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+		<div class="container">
+	<div id="viewc">
+		  <h1 class="font-weight-bold"  style="text-align:center;padding:20px ;background-color:grey;text-shadow: 2px 2px 4px #000000;text-shadow: 2px 2px 4px rgb(255, 255, 255);">View Employee</h1><hr>
+				<div class="row">
+						<div class="col-sm-4">
+							<form id="viewcd" name="viewcd" method="post">
+								<div>
+									<input class="form-control me-2 mt-2" type="search"
+										id="keyword" name="keyword" placeholder="Search"
+										aria-label="Search">
+								</div>
+								<div>
+									<button class="btn btn-outline-success btn-dark mt-2 mb-2"
+										type="submit">Search</button>
+								</div>
+							</form>
+						</div>
+					</div>
+		<div class="row" style="overflow: auto;">
+		<table class="table"id="myTable">
+			<thead>
+					<tr>
+						<th>ID</th>
+						<th>Company Name</th>
+						<th>Company Email</th>
+						<th>Company City</th>
+						<th>Company Establish </th>
+						<th>Address</th>
+						<th>Company Contact no:</th>
+						<th>Update</th>
+						<th>Delete</th>
+						
+					</tr>
+				</thead>
+				
+				<tbody>
+				
+
+				</tbody>
+			
+		</table> 
+		</div>
+		</div>
+		</div>
+		
+	</div>
+
+	</div>
+	</section>
+
+</body>
+</html>

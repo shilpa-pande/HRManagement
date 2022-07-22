@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="hr/companyDocuments::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>this is home page</title>
+ 
+</head>
+<body>
+<section>
+
+  <script src="/js/hr.js/hrDoc.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+ <div class="container">
+
+	<div class="row">
+           
+             <div class="col-md-9 col-md-offset-3">
+           
+           		 <div id="postResultDiv" align="center"></div>
+               
+                <form class="form-horizontal" id="submit" method="post"   enctype="multipart/form-data">
+                 
+                 
+                <h1 class="font-weight-bold"  style="text-align:center;padding:30px ;background-color:grey;text-shadow: 2px 2px 4px #000000;text-shadow: 2px 2px 4px rgb(255, 255, 255);"> Documents</h1><hr>
+                
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="name"> Name:</label>
+                        <div class="col-sm-12">
+                          <input type="text" class="form-control"  placeholder="Enter Name" name="name" id="name" required>
+                        </div>
+                      </div><br>
+                      <div class="form-group ">
+                  <label for="description" class="col-3 col-form-label">Description:</label>
+                  <div class="col-sm-12">
+                  <textarea 
+                  name = "description" 
+                  placeholder="Enter description !!"  
+                  rows="6" 
+                  id="description"
+                  class="form-control"></textarea>
+                  </div>
+                </div><br>
+                    <div class="form-group">
+                    <label class="col-sm-3 col-form-label" for="doc">Documents:</label>
+					<div class="col-sm-12 custom-file">
+					<input type="file" class="form-control" id="hrdoc" name="hrdoc" accept=".pdf,.doc"/>
+					<br>
+					
+					</div>
+					
+					
+					</div>
+					<br>
+           
+                    <div class="form-group">        
+                      <div class="col-sm-offset-3 col-sm-12">
+                        <button type="submit" class="btn btn-success btn-block">Submit</button>
+                      </div>
+                    </div>
+                    <hr>
+                </form>
+                
+
+            </div>
+
+        </div>
+	
+</div>
+</section>
+</body>
+</html>
