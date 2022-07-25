@@ -31,7 +31,8 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="name">Name:</label>
                         <div class="col-sm-12">
-                          <input type="text" class="form-control"  placeholder="Enter Name" pattern="[a-zA-Z]+"  name="name" id="name" required>
+                          <input type="text" class="form-control"  placeholder="Enter Name" pattern="^[a-zA-Z\s]+$" oninvalid="setCustomValidity('Please enter name in correct format eg: Shilpa Pandey')"
+    onchange="try{setCustomValidity('')}catch(e){}"  name="name" id="name" required>
                         </div>
                       </div><br>
                         <div class="form-group">
@@ -67,7 +68,8 @@
                           <div class="form-group">
                       <label class="control-label col-sm-3" for="contact">Contact Number:</label>
                       <div class="col-sm-12">
-                        <input type="number" class="form-control" placeholder="Enter Contact no"  pattern="[0-9]{10}" name="contactno" id=contactno required>
+                        <input type="text" class="form-control" placeholder="Enter Contact no"  pattern="^[0-9]{10}$"  oninvalid="setCustomValidity('Please enter 10 digit number eg: 1234567890')"
+    					onchange="try{setCustomValidity('')}catch(e){}"  name="contactno" id=contactno required>
                       </div>
                     </div><br>
                       <div class="form-group">

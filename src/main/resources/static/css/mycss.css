@@ -107,6 +107,13 @@
         background-color:white;  
 	
 }
+#seekersform{
+	min-height: 10px;
+      	padding:10px;
+        margin: 20px;
+        background-color:white;  
+	
+}
 #saveJobDetails{
 	
 		min-height: 10px;
@@ -162,7 +169,7 @@
 	text-decoration: none;
 	color: gray;
 }
-
+seekersform
 .sidebar a:hover{
 	background: #e2e2e2;
 }

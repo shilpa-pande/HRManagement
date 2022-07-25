@@ -33,7 +33,7 @@ public class Project implements Serializable{
 	
 	
 
-	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "prId")
+	 @OneToMany(cascade = CascadeType.MERGE, mappedBy = "prId")
 		private List<Employee> pr=new ArrayList<>();
 		
 	 

@@ -147,7 +147,7 @@ $(document).delegate('.edit', 'click', function() {
 	dob.html("<input type='date' id='dob' value='" + dob.html() + "'/>");
 	salary.html("<input type='text' id='salary' value='" + salary.html() + "'/>");
 	contactno.html("<input type='text' id='contactno' value='" + contactno.html() + "'/>");
-	password.html("<input type='text' id='password' value='" + password.html() + "'/>");	
+	password.html("<input type='password' id='password' value='" + password.html() + "'/>");	
 	buttons.html("<button id='save' class= 'btn btn-success'>Save</button>");
 	
 });
@@ -176,7 +176,7 @@ $(document).delegate('#save', 'click', function() {
 		data: JSON.stringify({
 			'id': id.html(), 'name': name.children("input[type=text]").val(),'email':email.children("input[type=text]").val(),'gender':gender.children("input[type=text]").val(), 
 			'city': city.children("input[type=text]").val(),'department': department.children("input[type=text]").val(),'dob':dob.children("input[type=date]").val(),
-			'salary':salary.children("input[type=text]").val(),'contactno': contactno.children("input[type=text]").val(), 'password':password.children("input[type=text]").val(),
+			'salary':salary.children("input[type=text]").val(),'contactno': contactno.children("input[type=text]").val(), 'password':password.children("input[type=password]").val(),
 		}),
 		cache: false,
 		success: function() {
@@ -188,7 +188,7 @@ $(document).delegate('#save', 'click', function() {
 	    	dob.html(dob.children("input[type=date]").val());
 	    	salary.html(salary.children("input[type=text]").val());
 	    	contactno.html(contactno.children("input[type = text]").val());
-	    	 password.html(password.children("input[type=text]").val()); 
+	    	 password.html(password.children("input[type=password]").val()); 
 	        
 			buttons.html("<button class='btn btn-warning edit' id='" + id.html() + "'>Edit</button>");
 		},

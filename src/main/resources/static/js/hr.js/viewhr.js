@@ -142,7 +142,7 @@ $(document).delegate('.edit', 'click', function() {
 	gender.html("<input type='text' id=gender  value='"+ gender.html() +"'/>");
 	city.html("<input type='text' id='city' value='" + city.html() + "'/>");
 	contactno.html("<input type='text' id='contactno' value='" + contactno.html() + "'/>");
-	password.html("<input type='text' id='password' value='" + password.html() + "'/>");	
+	password.html("<input type='password' id='password' value='" + password.html() + "'/>");	
 	buttons.html("<button id='save' class= 'btn btn-success'>Save</button>");
 	
 });
@@ -168,7 +168,7 @@ $(document).delegate('#save', 'click', function() {
 		data: JSON.stringify({
 			'hid': hid.html(), 'name': name.children("input[type=text]").val(),'email':email.children("input[type=text]").val(),'gender':gender.children("input[type=text]").val(), 
 			'city': city.children("input[type=text]").val(),
-			'contactno': contactno.children("input[type=text]").val(), 'password':password.children("input[type=text]").val(),
+			'contactno': contactno.children("input[type=text]").val(), 'password':password.children("input[type=password]").val(),
 		}),
 		cache: false,
 		success: function() {
@@ -177,7 +177,7 @@ $(document).delegate('#save', 'click', function() {
 	    	gender.html(gender.children("input[type=text]").val());
 	    	city.html(city.children("input[type=text]").val());
 	    	contactno.html(contactno.children("input[type = text]").val());
-	    	 password.html(password.children("input[type=text]").val()); 
+	    	 password.html(password.children("input[type=password]").val()); 
 	        
 			buttons.html("<button class='btn btn-warning edit' id='" + hid.html() + "'>Edit</button>");
 		},

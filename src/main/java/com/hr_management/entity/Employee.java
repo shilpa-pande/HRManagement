@@ -1,5 +1,6 @@
 package com.hr_management.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Employee {
 	private String city;
 	private String department;
 	private String dob;
-	private long salary;
+	private String salary;
 	private long contactno;
 	private String role;
 	private String password;
@@ -91,10 +92,11 @@ public class Employee {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public long getSalary() {
+
+	public String getSalary() {
 		return salary;
 	}
-	public void setSalary(long salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
 	public long getContactno() {

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hr_management.entity.Employee;
-import com.hr_management.entity.Project;
 import com.hr_management.service.EmpService;
 
 
@@ -32,7 +31,7 @@ public class HrEmployeeRestController {
 			@RequestParam("city") String city,
 			@RequestParam("department") String department,
 			@RequestParam("dob") String dob,
-			@RequestParam("salary") long salary,
+			@RequestParam("salary") String salary,
 			@RequestParam("contactno") long contactno,
 			@RequestParam("password") String password,
 			
@@ -76,10 +75,8 @@ public class HrEmployeeRestController {
 
 	
 			@PostMapping("/hr/updateEmployees")
-			private Employee updateEmp(@RequestBody Employee emp) {
-				 Project pr=emp.getPrId();
-				 int prid=pr.getPid();
-				 
+			private Employee updateEmp(@RequestBody Employee emp,int prid) {
+				
 				
 				empService.saveemp(emp, prid);
 				return emp;

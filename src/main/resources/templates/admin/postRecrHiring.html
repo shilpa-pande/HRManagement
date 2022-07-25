@@ -32,6 +32,9 @@
                     type="text" 
                     class="form-control" 
                     id="companyName" 
+                     pattern= "^[a-zA-Z\s]+$"
+                    oninvalid="setCustomValidity('Please enter correct company name eg: Value Coders')"
+    				onchange="try{setCustomValidity('')}catch(e){}" 
                     aria-describedby="emailHelp"
                     placeholder="Enter here"
                     required
@@ -44,7 +47,7 @@
                 <div class="form-group row">
                     <label class="col-3 col-form-label">Skills :</label>
 					 <div class="col-12 custom-file">
-						<select id="jobSkills"  name="jobSkills" class = "choices-multiple-remove-button" placeholder="Select Skills" multiple>
+						<select id="jobSkills"  name="jobSkills" class = "choices-multiple-remove-button" placeholder="Select Skills" multiple required>
                           <option value="HTML">HTML</option>
                           <option value="Jquery">Jquery</option>
                           <option value="CSS">CSS</option>
@@ -105,7 +108,7 @@
                   placeholder="Enter description !!"  
                   rows="6" 
                   id="description"
-                  class="form-control"></textarea></div>
+                  class="form-control" required></textarea></div>
                 </div>
       
                <br>

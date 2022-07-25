@@ -21,7 +21,8 @@ public interface EmployeeRepo extends JpaRepository<Employee, Integer>{
 	@Query("SELECT s from Employee s WHERE pr_id_pid =?1")
     public List<Employee> getEmpByProject(int id); 
 	
-	
+//	@Query(value = "select pr_id_pid from Employee u where u.id =?1")
+//	public int  getprid( int id);
 
 
 	

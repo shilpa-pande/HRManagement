@@ -74,7 +74,7 @@ public class EmpService {
 						job.setDob(addJob.getDob());
 						job.setGender(addJob.getGender());
 						job.setPassword(addJob.getPassword());
-						job.setSalary(addJob.getSalary());
+						job.setSalary( addJob.getSalary());
 						job.setEmail(addJob.getEmail());
 						
 					}
