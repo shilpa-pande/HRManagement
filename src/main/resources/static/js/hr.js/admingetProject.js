@@ -64,7 +64,7 @@ function ajaxGet() {
 	var tableData = "";
 	$.ajax({
 		type: "GET",
-		url: "/admin/getProject",
+		url: "/getProject",
 		data:{keyword: keyword},
 		success: function(data) {
 			globleTableData=data
@@ -108,7 +108,7 @@ function delet(pid){
 		alert(pid);
 		$.ajax({
 			type: "DELETE",
-			url: "/admin/deleteProjects/" +pid,
+			url: "/deleteProjects/" +pid,
 			cache: false,
 			success: function() {
 				parent.fadeOut('slow', function() {

@@ -16,7 +16,6 @@ public class HomeRestController {
 	
 	
 	
-	
 	@PostMapping("/hrs")
 	public HumanResource saveHr(@RequestBody HumanResource hrs) 
 	{

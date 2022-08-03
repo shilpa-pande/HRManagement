@@ -26,7 +26,7 @@
                         <label class="control-label col-sm-3" for="name"> Name:</label>
                         <div class="col-sm-12">
                           <input type="text" class="form-control"  placeholder="Enter Name" pattern="^[a-zA-Z\s]+$" oninvalid="setCustomValidity('Please enter name in correct formar eg: Shilpa Pandey')"
-    onchange="try{setCustomValidity('')}catch(e){}"name="name" id="name" required>
+    						onchange="try{setCustomValidity('')}catch(e){}"name="name" id="name" required>
                         </div>
                       </div><br>
                         <div class="form-group">
@@ -98,13 +98,7 @@
                         <input type="password" class="form-control"  placeholder="Enter password" name="password"  id="password" required>
                       </div>
                     </div><br>
-                       <div class="form-group">
-                        <label class="control-label col-sm-3" for="prid">Project id:</label>
-                        <div class="col-sm-12">
-                          <input type="text" class="form-control"  placeholder="prid" name="prid" id="prid" required>
-                        </div>
-                      </div><br>
-           
+                   
                     <div class="form-group">        
                       <div class="col-sm-offset-3 col-sm-12">
                         <button type="submit" class="btn btn-success btn-block">Submit</button>

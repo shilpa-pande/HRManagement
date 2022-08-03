@@ -12,8 +12,8 @@ $(document).ready(
 			$.ajax({
 
 				type: "POST",
-				enctype: 'multipart/form-data',
-				url: "/admin/saveJob",
+			
+				url: "/saveJob",
 				data: data,
 				processData: false,
 				contentType: false,

@@ -89,26 +89,7 @@ function ajaxGet() {
 			pagedata(page)
 
 			
-//			data.forEach(function(item) {
-//				tableData += '<tr>' +
-//					'<td id = "Id' + item.id + '">' + item.id + '</td>' +
-//					'<td id = "companyName' + item.companyName + '">' + item.companyName + '</td>' +
-//					'<td id = "jobSkills' + item.jobSkills + '">' + item.jobSkills + '</td>' +
-//					'<td id = "date' + item.date + '">' + item.date + '</td>' +
-//					'<td id = "city' + item.city + '">' + item.city + '</td>' +
-//					'<td id = "description' + item.description + '">' + item.description + '</td>' +
-//					
-//					'<td>' +
-//					'<button type = "button" id = "edit' + item.id + '" class = "btn btn-warning btn-md edit">Edit</button>' +
-//					'</td>' +
-//					'<td>' +
-//					'<button type = "button" id = "delet' + item.id + '" class = "btn btn-danger btn-md delet" onclick = "delet(' + item.id + ')">Delete</button>' +
-//					'</td>' +
-//					 
-//					
-//					'</tr>';
-//			});
-//			$("#myTable>tbody").html(tableData);
+
 		},
 	 	
 	});
@@ -127,7 +108,7 @@ function delet(id){
 		alert(id);
 		$.ajax({
 			type: "DELETE",
-			url: "/admin/deleteJob/" +id,
+			url: "/deleteJob/" +id,
 			cache: false,
 			success: function() {
 				parent.fadeOut('slow', function() {
@@ -163,7 +144,15 @@ $(document).delegate('.edit', 'click', function() {
     
 
 	jobSkills.html("<input type='text' id='jobSkills' value='" + jobSkills.html() + "'/>");
-	city.html("<input type='text' id='city' value='" + city.html() + "'/>");
+   let citydropdown=`<select id="city" name="city" style="padding: 4px;">
+                              <option value="ddun">Dehradun</option>
+                              <option value="gurgaon">Gurgaon</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="mumbai">Mumbai</option>
+                               <option value="chennai">Chennai</option>
+                               <option value="raipur">Raipur</option>
+   			/select>`;
+   			city.html(citydropdown);
 	description.html("<textarea id=description >"+ description.html() +"</textarea>");
 	
 	buttons.html("<button id='save' class= 'btn btn-success'>Save</button>");
@@ -185,15 +174,15 @@ $(document).delegate('#save', 'click', function() {
 	$.ajax({
 		type: "POST",
 		contentType: "application/json; charset=utf-8",
-		url: "/admin/updateJob",
+		url: "/updateJob",
 		data: JSON.stringify({
 			'id': id.html(), 'companyName': companyName.html(), 'jobSkills': jobSkills.children("input[type=text]").val(), 'date': date.html(),
-			'city': city.children("input[type=text]").val(),'description':description.children("textarea").val(),
+			 'city': city.find(":selected").text(),'description':description.children("textarea").val(),
 		}),
 		cache: false,
 		success: function() {
 	    	jobSkills.html(jobSkills.children("input[type = text]").val());
-	        city.html(city.children("input[type = text]").val());
+	       	city.html(city.find(":selected").text());
 	        description.html(description.children("textarea").val());
 	        
 			buttons.html("<button class='btn btn-warning edit' id='" + id.html() + "'>Edit</button>");

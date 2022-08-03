@@ -1,9 +1,13 @@
 package com.hr_management.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.hr_management.Repository.AddProjectRepo;
 import com.hr_management.Repository.EmployeeRepo;
@@ -17,20 +21,25 @@ public class EmpService {
 	@Autowired
 	private EmployeeRepo empRepo;
 	
-	@Autowired
-	private AddProjectRepo prRepo; 
+	@Autowired 
+	private AddProjectRepo repo;
 	
-	
-	
-	public Employee saveemp(Employee emp,Integer prid) {
-				
-				
-				System.out.println(prid);
-				
-				@SuppressWarnings("deprecation")
-				Project pr=prRepo.getById(prid);
-				emp.setPrId(pr);
-				
+		
+	public Employee saveemp(String email,@PathVariable("pid") Integer pid) 
+	{
+		System.out.println(pid);
+	    Employee emp=empRepo.getUserByEmail(email);
+	    @SuppressWarnings("deprecation")
+		Project pr=repo.getById(pid);
+	    System.out.println(pr);
+
+	    Set <Project> projects=new HashSet<>();
+	    
+	       projects.add(pr);
+	       emp.getProjects().add(pr);
+	       pr.getEmployees().add(emp);
+		
+	      
 				return empRepo.save(emp);
 					
 			}
@@ -92,6 +101,14 @@ public class EmpService {
 			
 				return empRepo.getEmpByProject(id);
 		}
+
+
+
+
+		
+			
+			
+
 
 			
 		

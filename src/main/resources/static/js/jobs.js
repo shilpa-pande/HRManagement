@@ -47,7 +47,7 @@ function pagedata(pageno){
 					'<td id = "description' + item.description + '">' + item.description + '</td>' +
 					
 				
-					'<td id = "Apply' + item.id + '">' + '<a href="/apply' + '"+" class = "btn btn-danger btn-md "">' + 'Apply' + 
+					'<td id = "Apply' + item.id + '">' + '<a href="/apply/' + item.id + '"+" class = "btn btn-danger btn-md "">' + 'Apply' + 
 					'</td>' +
 					'</tr>';
 					

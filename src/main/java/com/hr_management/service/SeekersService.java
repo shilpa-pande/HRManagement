@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.hr_management.Repository.AddJobRepo;
 import com.hr_management.Repository.SeekersRepo;
@@ -25,25 +26,23 @@ public class SeekersService {
 	
 	
 	
-public Seekers saveSeekers(Seekers sk,Integer skid) {
+public Seekers saveSeekers(Seekers sk,@PathVariable("id") Integer id) {
 	
 	
-	System.out.println(skid);
+	System.out.println(id);
 	
 	@SuppressWarnings("deprecation")
-	AddJob aj=ajRepo.getById(skid);
+	AddJob aj=ajRepo.getById(id);
 	sk.setSeekersId(aj);
-	
-		  
-		return skRepo.save(sk);
+	return skRepo.save(sk);
 		
 	}
 
 
-public List<Seekers> getseekersByJob(int id) {
+	public List<Seekers> getseekersByJob(int id) {
 	
 	return skRepo.getSeekersByJob(id);
-}
+	}
 
 	
-}
+	}

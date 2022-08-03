@@ -25,7 +25,7 @@ $(document).ready(
 		        	if (data != null) 
 					{
 						
-						 alert(" successfully added project");
+						 alert(" successfully added employee");
                    		 window.location = "/hr/viewEmployee";
 					}
 					else 

@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hr_management.Repository.EmployeeRepo;
 import com.hr_management.entity.Employee;
 import com.hr_management.service.EmpService;
 
@@ -22,7 +22,9 @@ public class HrEmployeeRestController {
 	@Autowired
 	private EmpService  empService;
 	
-
+	
+	@Autowired EmployeeRepo empRepo;
+	
 
 	@PostMapping("/hr/employees")
 	public Employee saveemp(@RequestParam("name") String name,
@@ -33,9 +35,9 @@ public class HrEmployeeRestController {
 			@RequestParam("dob") String dob,
 			@RequestParam("salary") String salary,
 			@RequestParam("contactno") long contactno,
-			@RequestParam("password") String password,
+			@RequestParam("password") String password
 			
-			Integer prid
+		
 			) 
 	
 	{		
@@ -51,14 +53,14 @@ public class HrEmployeeRestController {
 			emp.setSalary(salary);
 			emp.setContactno(contactno);
 			emp.setPassword(password);
-			empService.saveemp(emp,prid);
+			empRepo.save(emp);
 			return emp;
 	}
 	
 
 	
 	@GetMapping("/hr/employees")
-	private List<Employee> getEmp(@RequestParam String keyword) {
+	private List<Employee> getEmp(String keyword) {
 		
 		if(keyword == null) {		
 			List<Employee> emps = empService.getEmployee();
@@ -75,11 +77,9 @@ public class HrEmployeeRestController {
 
 	
 			@PostMapping("/hr/updateEmployees")
-			private Employee updateEmp(@RequestBody Employee emp,int prid) {
+			private void updateEmp(String email,Integer pid) {
+				empService.saveemp(email, pid);
 				
-				
-				empService.saveemp(emp, prid);
-				return emp;
 			}
 			
 			
@@ -92,8 +92,6 @@ public class HrEmployeeRestController {
 			
 			@GetMapping("/hr/getAppliers/{id}")
 			private List<Employee> getEmpByPRoject(@RequestParam int id) {
-				
-				
 		     		List<Employee> emp = empService.getemployeeByProject(id);
 					return emp;
 				}

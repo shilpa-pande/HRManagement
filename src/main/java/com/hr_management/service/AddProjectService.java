@@ -3,6 +3,7 @@ package com.hr_management.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.hr_management.Repository.AddProjectRepo;
@@ -21,18 +22,6 @@ public class AddProjectService {
 	
 	public Project saveProject( Project project) {
 		
-		
-//		System.out.println(empid);
-//		@SuppressWarnings("deprecation")
-//		
-//		Employee emp=empRepo.getById(empid);
-//		
-//		
-//		
-//		//Set<Project> pr=new HashSet<>();
-//	     //pr.add(project);
-//	   project.setEmp(emp);
-	      
 		return addProjectRepo.save(project);
 		
 	}
@@ -59,12 +48,26 @@ public class AddProjectService {
 			
 		}
 		
-		/*
-		 * public List<Project> getprojectListBYID(int id) {
-		 * 
-		 * List<Project> pr = addProjectRepo.findAllByEmpId(1); return pr; }
-		 */
 		
+		    
+		
+			public Optional<Project> findById(int id) {
+
+		        return addProjectRepo.findById(id);
+		    }
+		
+	
+
+			
+			public Optional<Project> ProjectById(Integer pid) {
+				return addProjectRepo.findById(pid);
+				
+				
+				
+			}
+			
+
+
 
 
 	

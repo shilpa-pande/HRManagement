@@ -62,7 +62,7 @@ function ajaxGet() {
 	var tableData = "";
 	$.ajax({
 		type: "GET",
-		url: "/admin/hrDocs",
+		url: "/hrDocs",
 		data:{keyword: keyword},
 		success: function(data) {
 			globleTableData=data
@@ -87,7 +87,7 @@ function delet(id){
 		alert(id);
 		$.ajax({
 			type: "DELETE",
-			url: "/admin/deleteDoc/" +id,
+			url: "/deleteDoc/" +id,
 			cache: false,
 			success: function() {
 				parent.fadeOut('slow', function() {

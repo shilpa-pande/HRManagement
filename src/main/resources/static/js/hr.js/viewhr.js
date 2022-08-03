@@ -140,7 +140,15 @@ $(document).delegate('.edit', 'click', function() {
 	name.html("<input type='text' id='name' value='" + name.html() + "'/>");
 	email.html("<input type='text' id='email' value='" + email.html() + "'/>");
 	gender.html("<input type='text' id=gender  value='"+ gender.html() +"'/>");
-	city.html("<input type='text' id='city' value='" + city.html() + "'/>");
+	   let citydropdown=`<select id="city" name="city" style="padding: 4px;">
+                              <option value="ddun">Dehradun</option>
+                              <option value="gurgaon">Gurgaon</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="mumbai">Mumbai</option>
+                               <option value="chennai">Chennai</option>
+                               <option value="raipur">Raipur</option>
+   			/select>`;
+   			city.html(citydropdown);
 	contactno.html("<input type='text' id='contactno' value='" + contactno.html() + "'/>");
 	password.html("<input type='password' id='password' value='" + password.html() + "'/>");	
 	buttons.html("<button id='save' class= 'btn btn-success'>Save</button>");
@@ -167,7 +175,7 @@ $(document).delegate('#save', 'click', function() {
 		url: "/admin/updateHrs",
 		data: JSON.stringify({
 			'hid': hid.html(), 'name': name.children("input[type=text]").val(),'email':email.children("input[type=text]").val(),'gender':gender.children("input[type=text]").val(), 
-			'city': city.children("input[type=text]").val(),
+			'city': city.find(":selected").text(),
 			'contactno': contactno.children("input[type=text]").val(), 'password':password.children("input[type=password]").val(),
 		}),
 		cache: false,
@@ -175,7 +183,7 @@ $(document).delegate('#save', 'click', function() {
 	    	name.html(name.children("input[type=text]").val());
 	    	email.html(email.children("input[type=text]").val());
 	    	gender.html(gender.children("input[type=text]").val());
-	    	city.html(city.children("input[type=text]").val());
+	    		city.html(city.find(":selected").text());
 	    	contactno.html(contactno.children("input[type = text]").val());
 	    	 password.html(password.children("input[type=password]").val()); 
 	        

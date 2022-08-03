@@ -19,8 +19,6 @@ public interface HumanResourceRepo extends JpaRepository<HumanResource, Integer>
     public HumanResource getUserByUsername(@Param("email") String email);
 	
 	
-
-	
 	
 	
 	

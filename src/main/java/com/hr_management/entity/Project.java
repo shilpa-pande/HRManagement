@@ -1,24 +1,24 @@
 package com.hr_management.entity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "project")
-public class Project implements Serializable{
+public class Project {
 	
 	
-	private static final long serialVersionUID = -4357411223179608187L;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,22 +29,24 @@ public class Project implements Serializable{
 	private String frontendTechnology;
 	private String backendTechnology;
 	private String databaseTechnology;
+   
+	
+	@ManyToMany(mappedBy = "projects", cascade = { CascadeType.MERGE })
+    @JsonIgnore
+    private Set<Employee> employees = new HashSet<Employee>();
 	
 	
 	
 
-	 @OneToMany(cascade = CascadeType.MERGE, mappedBy = "prId")
-		private List<Employee> pr=new ArrayList<>();
-		
 	 
 
 	
-
-	public List<Employee> getPr() {
-		return pr;
+    
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
-	public void setPr(List<Employee> pr) {
-		this.pr = pr;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 	public int getPid() {
 		return pid;
@@ -88,6 +90,15 @@ public class Project implements Serializable{
 	public void setDatabaseTechnology(String databaseTechnology) {
 		this.databaseTechnology = databaseTechnology;
 	}
+	@Override
+	public String toString() {
+		return "Project [pid=" + pid + ", projectName=" + projectName + ", clientName=" + clientName
+				+ ", projectManager=" + projectManager + ", frontendTechnology=" + frontendTechnology
+				+ ", backendTechnology=" + backendTechnology + ", databaseTechnology=" + databaseTechnology + "]";
+	}
+
+	
+	
 
 	
 	

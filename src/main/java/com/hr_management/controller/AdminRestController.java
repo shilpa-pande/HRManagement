@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,30 +43,42 @@ public class AdminRestController {
 	private HrDocsService hrService;
 	
 	
-	
-	
-	
-
 	@Autowired
 	private AddJobService addJobService;
    
 	
-	
+	//HR REST Controllers
 
 		@GetMapping("/admin/hrs")
 		private List<HumanResource> getHr(@RequestParam String keyword) {
 			if(keyword == null) {		
-				List<HumanResource> hrs = adminService.getEmployee();
+				List<HumanResource> hrs = adminService.getHr();
 	     		return hrs;
 			}else {	
-	     		List<HumanResource> hr = adminService.getemployeeByKeyword(keyword);
+	     		List<HumanResource> hr = adminService.gethrByKeyword(keyword);
 				return hr;
 			}
 		}
 		
 		
-	
-		@GetMapping("/admin/employees")
+		@RequestMapping(method = RequestMethod.DELETE, value = "/admin/hrs/{id}")
+		public void deleteHrById(@PathVariable int id) {
+			adminService.deleteHrById(id);
+		}
+		
+		
+		@PostMapping("/admin/updateHrs")
+		private HumanResource updateHr(@RequestBody HumanResource hr) {
+			hr.setRoles("ROLE_USER");
+			adminService.savehr(hr);
+			return hr;
+		}
+		
+		
+		//Employee Rest Controllers
+		
+		
+		@GetMapping("/employees")
 		private List<Employee> getEmp(@RequestParam String keyword) {
 			if(keyword == null) {		
 				List<Employee> emps = empService.getEmployee();
@@ -76,37 +90,29 @@ public class AdminRestController {
 		}
 		
 	
-		@RequestMapping(method = RequestMethod.DELETE, value = "/admin/hrs/{id}")
-		public void deleteHrById(@PathVariable int id) {
-			adminService.deleteHrById(id);
-		}
-		
-		
-
-		@PostMapping("/admin/updateHrs")
-		private HumanResource updateEmp(@RequestBody HumanResource hr) {
-			hr.setRoles("ROLE_USER");
-			adminService.savehr(hr);
-			return hr;
-		}
-		
-	
 		@PostMapping("/admin/updateEmployees")
-		private Employee updateEmp(@RequestBody Employee emp,int prid) {
-			empService.saveemp(emp,prid);
-			return emp;
+		private void updateEmp(String email,Integer pid) {
+			empService.saveemp(email,pid);
+		
 		}
 		
-	
-		@RequestMapping(method = RequestMethod.DELETE, value = "/admin/employees/{id}")
-		public void deleteEmpById(@PathVariable int id) {
+		@RequestMapping(method = RequestMethod.DELETE, value = "/employees/{id}")
+		public ResponseEntity<Object> deleteEmpById(@PathVariable int id) {
 			empService.deleteEmpById(id);
+			return new ResponseEntity<>("Employee is deleted successfully", HttpStatus.OK);
 		}
+		
 		
 
 	
-		@PostMapping("/admin/saveJob")
-		private AddJob addjob(@RequestParam("companyName") String companyName
+	
+	
+	
+		
+			//JOB REST controller
+	
+		@PostMapping("/saveJob")
+		public ResponseEntity<Object> addjob(@RequestParam("companyName") String companyName
 				,@RequestParam("jobSkills") String jobSkills,@RequestParam("date") Date date
 				,@RequestParam("city") String city,@RequestParam("description") String description)
 		{
@@ -118,7 +124,7 @@ public class AdminRestController {
 			addjob.setDescription(description);
 			addJobService.saveJob(addjob);
 			
-			return addjob;
+			return new ResponseEntity<>("Job is created successfully", HttpStatus.CREATED);
 		}
 		
 		
@@ -134,22 +140,25 @@ public class AdminRestController {
 				}
 				
 				
-				@PostMapping("/admin/updateJob")
-				private AddJob updateJob(@RequestBody AddJob addjob) {
+				@PostMapping("/updateJob")
+				public ResponseEntity<Object>  updateJob(@RequestBody AddJob addjob) {
 					addJobService.saveJob(addjob);
-					return addjob;
+					return new ResponseEntity<>("job is updated successsfully", HttpStatus.OK);
 				}
 				
 				
-				@RequestMapping(method = RequestMethod.DELETE, value = "/admin/deleteJob/{id}")
-				public void deleteJobById(@PathVariable int id) {
+				@RequestMapping(method = RequestMethod.DELETE, value = "/deleteJob/{id}")
+				 public ResponseEntity<Object> deleteJobById(@PathVariable int id) {
 					addJobService.deleteJobById(id);
+					return new ResponseEntity<>("Job is deleted successsfully", HttpStatus.OK);
 				}
 				
 				
 
+					//Project Rest Controllers		
 				
-					@GetMapping("/admin/getProject")
+				
+					@GetMapping("/getProject")
 					private List<Project> getPRoject(@RequestParam String keyword) {
 						if(keyword == null) {		
 							List<Project> listAllprojects = prService.getprojectList();
@@ -161,9 +170,11 @@ public class AdminRestController {
 					}
 					
 				
-					@RequestMapping(method = RequestMethod.DELETE, value = "/admin/deleteProjects/{pid}")
-					public void deleteProjectById(@PathVariable int pid) {
+					@RequestMapping(method = RequestMethod.DELETE, value = "/deleteProjects/{pid}")
+					public ResponseEntity<Object> deleteProjectById(@PathVariable int pid) {
 						prService.deleteProjectById(pid);
+						return new ResponseEntity<>("Project is deleted successsfully", HttpStatus.OK);
+						
 					}
 					
 					
@@ -173,9 +184,11 @@ public class AdminRestController {
 						return pr;
 					}
 					
+				
 					
+					//hrDocs Rest Controllers
 					
-					@GetMapping("/admin/hrDocs")
+					@GetMapping("/hrDocs")
 					private List<HrDocuments> getdoc(@RequestParam String keyword) {
 						
 						if(keyword == null) {		
@@ -191,9 +204,10 @@ public class AdminRestController {
 					}
 					
 					
-					@RequestMapping(method = RequestMethod.DELETE, value = "/admin/deleteDoc/{pid}")
-					public void deleteDocById(@PathVariable int pid) {
+					@RequestMapping(method = RequestMethod.DELETE, value = "/deleteDoc/{pid}")
+					public ResponseEntity<Object> deleteDocById(@PathVariable int pid) {
 						hrService.deleteDocById(pid);
+						return new ResponseEntity<>("Document is deleted successfully", HttpStatus.OK);
 					}
 					
 					

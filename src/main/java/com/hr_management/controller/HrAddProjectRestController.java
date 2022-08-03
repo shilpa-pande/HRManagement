@@ -65,25 +65,7 @@ public class HrAddProjectRestController {
 		}
 		
 		
-//		  @GetMapping("/project")
-//		  public List<Project> getAllProjects() {
-//		    List<Project> pr = new ArrayList<Project>();
-//		    prRepo.findAll().forEach(pr::add);
-//			return pr;
-//		    }
-//		  
-//		  
-//		  @GetMapping("/getAssign/{id}/project")
-//		  public List<Employee> getAllEmployeeByProjectId(@PathVariable(value = "id") Integer id) {
-//		    
-//		    List<Employee> emp = empRepo.findEmployeeById(id);
-//			return emp;
-//		
-//			
-//		   
-//		  }
-//		  
-//	
+
 		
 	
 	

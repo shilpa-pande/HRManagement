@@ -58,6 +58,9 @@ function pagedata(pageno){
 					'<td>' +
 					'<button type = "button" id = "delet' + item.id + '" class = "btn btn-danger btn-md delet" onclick = "delet(' + item.id + ')">Delete</button>' +
 					'</td>' +
+					'<td id = "Projects' + item.id + '">' + '<a href="/hr/getProjects/' + item.id + '"+" class = "btn btn-warning btn-md "">' + 'Projects' + 
+					'</td>' +
+					'</tr>';
 					 
 					
 					'</tr>';
@@ -138,12 +141,29 @@ $(document).delegate('.edit', 'click', function() {
 	var password = parent.children("td:nth-child(10)");
     var buttons = parent.children("td:nth-child(11)");
     
+    
    
 	name.html("<input type='text' id='name' value='" + name.html() + "'/>");
 	email.html("<input type='text' id='email' value='" + email.html() + "'/>");
 	gender.html("<input type='text' id=gender  value='"+ gender.html() +"'/>");
-	city.html("<input type='text' id='city' value='" + city.html() + "'/>");
-	department.html("<input type='text' id='department' value='" + department.html() + "'/>");
+let citydropdown=`<select id="city" name="city" style="padding: 4px;">
+                              <option value="ddun">Dehradun</option>
+                              <option value="gurgaon">Gurgaon</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="mumbai">Mumbai</option>
+                               <option value="chennai">Chennai</option>
+                               <option value="raipur">Raipur</option>
+   			/select>`;
+   			city.html(citydropdown);
+		let departmentdropdown=`<select id="department" name="department" style="padding: 4px;">
+                                <option value="it">IT</option>
+                              <option value="cs">CS</option>
+                              <option value="hr">HR</option>
+                              <option value="marketing">Marketing</option>
+                               <option value="other">Other</option>
+                               
+   			/select>`;
+   			department.html(departmentdropdown);
 	dob.html("<input type='date' id='dob' value='" + dob.html() + "'/>");
 	salary.html("<input type='text' id='salary' value='" + salary.html() + "'/>");
 	contactno.html("<input type='text' id='contactno' value='" + contactno.html() + "'/>");
@@ -175,7 +195,7 @@ $(document).delegate('#save', 'click', function() {
 		url: "/hr/updateEmployees",
 		data: JSON.stringify({
 			'id': id.html(), 'name': name.children("input[type=text]").val(),'email':email.children("input[type=text]").val(),'gender':gender.children("input[type=text]").val(), 
-			'city': city.children("input[type=text]").val(),'department': department.children("input[type=text]").val(),'dob':dob.children("input[type=date]").val(),
+			 'city': city.find(":selected").text(),'department': department.find(":selected").text(),'dob':dob.children("input[type=date]").val(),
 			'salary':salary.children("input[type=text]").val(),'contactno': contactno.children("input[type=text]").val(), 'password':password.children("input[type=password]").val(),
 		}),
 		cache: false,
@@ -183,8 +203,8 @@ $(document).delegate('#save', 'click', function() {
 	    	name.html(name.children("input[type=text]").val());
 	    	email.html(email.children("input[type=text]").val());
 	    	gender.html(gender.children("input[type=text]").val());
-	    	city.html(city.children("input[type=text]").val());
-	    	department.html(department.children("input[type=text]").val());
+	    	city.html(city.find(":selected").text());
+	    	department.html(department.find(":selected").text());
 	    	dob.html(dob.children("input[type=date]").val());
 	    	salary.html(salary.children("input[type=text]").val());
 	    	contactno.html(contactno.children("input[type = text]").val());

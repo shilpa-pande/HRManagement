@@ -1,19 +1,18 @@
 package com.hr_management.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.*;  
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-
-
 
 
 
@@ -39,16 +38,47 @@ public class Employee {
 	private long contactno;
 	private String role;
 	private String password;
+	@ManyToMany(cascade = {
+	        CascadeType.MERGE
+	    })
+	    @JoinTable(
+	        name = "employees_projects",
+	        joinColumns = {
+	            @JoinColumn(name = "employee_id")
+	        },
+	        inverseJoinColumns = {
+	            @JoinColumn(name = "project_id")
+	        }
+	    )
+	    Set <Project> projects = new HashSet < Project > ();
 	
-	@ManyToOne
-	@JsonIgnore
-	private Project prId;
+
 	
-	public Project getPrId() {
-		return prId;
+
+
+
+	
+	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public void setPrId(Project prId) {
-		this.prId = prId;
+	
+
+
+	public Employee(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+
+
+
+	public Set<Project> getProjects() {
+		return projects;
+	}
+	public void setProjects(Set<Project> projects) {
+		this.projects = projects;
 	}
 	public int getId() {
 		return id;
@@ -117,6 +147,13 @@ public class Employee {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", email=" + email + "]";
+	}
+	
+	
+	
 
 	
 

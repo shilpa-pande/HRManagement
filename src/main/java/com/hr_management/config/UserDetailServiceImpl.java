@@ -12,11 +12,13 @@ import com.hr_management.entity.HumanResource;
 
 public class UserDetailServiceImpl implements UserDetailsService{
 
+	
+	
+	
+	
 	@Autowired
 	private HumanResourceRepo hrRepo;
 	
-
-	// fetching user from database
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

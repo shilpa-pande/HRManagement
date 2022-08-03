@@ -24,7 +24,6 @@ public class JobSeekersRestController {
 	private SeekersService skService;
 	
 	
-	
 			@GetMapping("/jobList")
 			private List<AddJob> getJobs(@RequestParam String keyword) {
 				if(keyword == null) {		
@@ -36,16 +35,17 @@ public class JobSeekersRestController {
 				}
 			}
 			
+			
 			@PostMapping("/saveseekers")
 			private Seekers addSeeker(
-					@RequestParam("name") String name
-					,@RequestParam("email") String email,
-					@RequestParam("gender") String gender
-					,@RequestParam("city") String city,
+					@RequestParam("name") String name,
+					@RequestParam("email") String email,
+					@RequestParam("gender") String gender,
+					@RequestParam("city") String city,
 					@RequestParam("dob") String dob,
 					@RequestParam("skills") String skills,
 					@RequestParam("contactno") long contactno,
-				Integer skid )			{
+				Integer id )			{
 				Seekers sk = new Seekers();
 				sk.setName(name);
 				sk.setEmail(email);
@@ -55,7 +55,7 @@ public class JobSeekersRestController {
 				sk.setSkills(skills);
 				sk.setContactno(contactno);
 				
-				skService.saveSeekers(sk,skid);
+				skService.saveSeekers(sk,id);
 				return sk;
 			}
 			
