@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="hr/base::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>this is home page</title>
+ 
+</head>
+<body>
+<section>
+
+<!--  <script src="/js/Employee.js/addEmployee.js"></script>-->
+	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+ <div class="container">
+
+	<div class="row">
+           
+             <div class="col-md-9 col-md-offset-3">
+           
+           		 <div id="postResultDiv" align="center"></div>
+               
+                <form class="form-horizontal" th:action="@{/hr/assignproject}" id="employeesignupform" th:object=${pr}>
+                   
+                 <input type="hidden" th:value="${pr.pid}" name="pid">
+                <h1 class="font-weight-bold"  style="text-align:center;padding:30px ;background-color:grey;text-shadow: 2px 2px 4px #000000;text-shadow: 2px 2px 4px rgb(255, 255, 255);">Employee Details</h1><hr>
+                
+                
+                
+                     
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="name"> Name:</label>
+                        <div class="col-sm-12">
+                          <input type="text" class="form-control"  placeholder="Enter Name" pattern="^[a-zA-Z\s]+$" oninvalid="setCustomValidity('Please enter name in correct formar eg: Shilpa Pandey')"
+    onchange="try{setCustomValidity('')}catch(e){}"name="name" id="name" required>
+                        </div>
+                      </div><br>
+                        <div class="form-group">
+                      <label class="control-label col-sm-3" for="email">Email:</label>
+                      <div class="col-sm-12">
+                        <input type="email" class="form-control"  placeholder="Enter email" name="email" id="email" required >
+                      </div>
+                    </div><br>
+                     
+                        
+                    <div class="form-group">        
+                      <div class="col-sm-offset-3 col-sm-12">
+                        <button type="submit" class="btn btn-success btn-block">Submit</button>
+                      </div>
+                    </div>
+                    <hr>
+                </form>
+                
+
+            </div>
+
+        </div>
+	
+</div>
+</section>
+</body>
+</html>

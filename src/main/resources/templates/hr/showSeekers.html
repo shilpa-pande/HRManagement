@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="/hr/base::Layout(~{::section})">
+<head>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+	<div class="container-fluid">
+	<div id="eviewc">
+	  <h1 class="font-weight-bold"  style="text-align:center;padding:20px ;background-color:grey;text-shadow: 2px 2px 4px #000000;text-shadow: 2px 2px 4px rgb(255, 255, 255);">Seekers Apply For This Job</h1><hr>
+		<table class="table table-hover">
+			<thead><tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>gender</th>
+						<th>City</th>
+						<th>Dob</th>
+						<th>Skills</th>						
+						<th>Contact No</th>
+					
+						
+						
+					</tr></thead>
+			
+			<tbody>
+			<tr th:each="employe : ${sk}">
+						<td th:text="${employe.id}">Item</td>
+						<td th:text="${employe.name}">Item</td>
+						<td th:text="${employe.email}">Item</td>
+						<td th:text="${employe.gender}">Item</td>
+						<td th:text="${employe.city}">Item</td>
+						
+						<td th:text="${employe.dob}">Item</td>
+						<td th:text="${employe.skills}">Item</td>
+						<td th:text="${employe.contactno}">Item</td>
+						
+						
+						
+					</tr>
+			
+			</tbody> 
+		</table> 
+		
+	</div>
+
+	</div>
+
+</section>
+
+
+
+</body>
+</html>
+
