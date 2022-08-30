@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.hr_management.controller.AdminRestController;
-import com.hr_management.entity.Employee;
 import com.hr_management.entity.HrDocuments;
 import com.hr_management.service.EmpService;
 

@@ -22,6 +22,7 @@ public class HrDocuments {
 
 	@Transient
 	private MultipartFile hrdoc;
+	
 	public int getId() {
 		return id;
 	}

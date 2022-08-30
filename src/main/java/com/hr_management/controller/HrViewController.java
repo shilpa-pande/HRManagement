@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.hr_management.Repository.AddProjectRepo;
 import com.hr_management.entity.Project;
 import com.hr_management.service.EmpService;
@@ -104,6 +103,8 @@ private AddProjectRepo repo;
 		public String getAppliersList( String email,Integer pid) {
 			
 			empService.saveemp(email, pid);
+			
+		
            return "hr/getProject";
 				
 

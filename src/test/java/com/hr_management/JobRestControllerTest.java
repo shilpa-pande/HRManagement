@@ -52,6 +52,8 @@ public class JobRestControllerTest extends AbstractTest{
 
 	    }
 	 
+	 
+	 
 		@Test
 		   public void getJobList() throws Exception {
 		      String uri = "/jobList?keyword=value";
@@ -65,6 +67,7 @@ public class JobRestControllerTest extends AbstractTest{
 		      AddJob[] emplist = super.mapFromJson(content, AddJob[].class);
 		      assertTrue(emplist.length > 0);
 		   }
+		
 		
 		
 		
@@ -89,6 +92,9 @@ public class JobRestControllerTest extends AbstractTest{
 		      String content = mvcResult.getResponse().getContentAsString();
 		      assertEquals(content, "Job is created successfully");
 		   }
+		 
+		 
+		 
 		 
 		 @Test
 		   public void deleteJob() throws Exception {
