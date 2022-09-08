@@ -17,9 +17,9 @@ public class AdminViewController {
 		
 	
 			@RequestMapping("/viewHr")
-				private String viewHr() {
-					return "admin/viewHr";
-				}
+			private String viewHr() {
+				return "admin/viewHr";	
+			}
 			
 			
 	

@@ -25,17 +25,16 @@ public class MyConfig extends WebSecurityConfigurerAdapter{
 	public UserDetailsService userDetailsService() {
 		return new UserDetailServiceImpl();
 	}
-	
 
-	
-	@Bean
-	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-		authProvider.setUserDetailsService(userDetailsService());
-		authProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
-		
-		return authProvider;
-	}
+
+    @Bean
+    DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+
+        return authProvider;
+    }
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

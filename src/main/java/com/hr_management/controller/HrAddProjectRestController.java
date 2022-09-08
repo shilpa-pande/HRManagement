@@ -21,10 +21,6 @@ public class HrAddProjectRestController {
 	
 	
 	
-	
-	
-
-	
 	@PostMapping("/hr/saveProject")
 	private Project addProject(
 			@RequestParam("projectName") String projectName,

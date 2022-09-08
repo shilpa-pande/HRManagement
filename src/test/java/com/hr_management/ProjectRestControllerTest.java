@@ -39,9 +39,6 @@ public class ProjectRestControllerTest extends AbstractTest{
 	   AdminRestController controllerUnderTest;
 	 
 	 
-	 
-	 
-	 
 	 @SuppressWarnings("deprecation")
 	 @Before
 	    public void setup() {
@@ -65,7 +62,12 @@ public class ProjectRestControllerTest extends AbstractTest{
 		      Project[] emplist = super.mapFromJson(content, Project[].class);
 		      assertTrue(emplist.length > 0);
 		   }
-		 @Test
+		
+		
+		
+		
+		
+		@Test
 		   public void deleteProject() throws Exception {
 		      String uri = "/deleteProjects/26";
 		      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();

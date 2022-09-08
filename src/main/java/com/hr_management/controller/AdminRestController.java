@@ -28,6 +28,7 @@ import com.hr_management.service.HrDocsService;
 
 
 @RestController
+
 public class AdminRestController {
 
 	@Autowired
@@ -75,9 +76,8 @@ public class AdminRestController {
 		}
 		
 		
+		
 		//Employee Rest Controllers
-		
-		
 		@GetMapping("/employees")
 		private List<Employee> getEmp(@RequestParam String keyword) {
 			if(keyword == null) {		
@@ -90,11 +90,13 @@ public class AdminRestController {
 		}
 		
 	
+		
 		@PostMapping("/admin/updateEmployees")
 		private void updateEmp(String email,Integer pid) {
 			empService.saveemp(email,pid);
 		
 		}
+		
 		
 		@RequestMapping(method = RequestMethod.DELETE, value = "/employees/{id}")
 		public ResponseEntity<Object> deleteEmpById(@PathVariable int id) {
@@ -104,13 +106,9 @@ public class AdminRestController {
 		
 		
 
-	
-	
-	
-	
+
 		
-			//JOB REST controller
-	
+		//JOB REST controller
 		@PostMapping("/saveJob")
 		public ResponseEntity<Object> addjob(@RequestParam("companyName") String companyName
 				,@RequestParam("jobSkills") String jobSkills,@RequestParam("date") Date date
@@ -128,8 +126,9 @@ public class AdminRestController {
 		}
 		
 		
+		
 				@GetMapping("/admin/jobList")
-				private List<AddJob> getJobs(@RequestParam String keyword) {
+				private List<AddJob> getJobs(@RequestParam String  keyword) {
 					if(keyword == null) {		
 						List<AddJob> listAlljobs = addJobService.getJobList();
 			     		return listAlljobs;
@@ -147,6 +146,8 @@ public class AdminRestController {
 				}
 				
 				
+				
+				
 				@RequestMapping(method = RequestMethod.DELETE, value = "/deleteJob/{id}")
 				 public ResponseEntity<Object> deleteJobById(@PathVariable int id) {
 					addJobService.deleteJobById(id);
@@ -155,9 +156,8 @@ public class AdminRestController {
 				
 				
 
+				
 					//Project Rest Controllers		
-				
-				
 					@GetMapping("/getProject")
 					private List<Project> getPRoject(@RequestParam String keyword) {
 						if(keyword == null) {		
@@ -170,11 +170,11 @@ public class AdminRestController {
 					}
 					
 				
+
 					@RequestMapping(method = RequestMethod.DELETE, value = "/deleteProjects/{pid}")
 					public ResponseEntity<Object> deleteProjectById(@PathVariable int pid) {
 						prService.deleteProjectById(pid);
-						return new ResponseEntity<>("Project is deleted successsfully", HttpStatus.OK);
-						
+						return new ResponseEntity<>("Project is deleted successsfully", HttpStatus.OK);	
 					}
 					
 					

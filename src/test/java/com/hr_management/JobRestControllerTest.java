@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.hr_management.controller.AdminRestController;
 import com.hr_management.entity.AddJob;
 import com.hr_management.service.AddJobService;
-
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 @SpringBootTest
@@ -56,7 +55,7 @@ public class JobRestControllerTest extends AbstractTest{
 	 
 		@Test
 		   public void getJobList() throws Exception {
-		      String uri = "/jobList?keyword=value";
+		      String uri = "/jobList?keyword=e";
 		 
 		      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
 		         .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
@@ -111,7 +110,7 @@ public class JobRestControllerTest extends AbstractTest{
 		   public void updateJob() throws Exception {
 		      String uri = "/updateJob";
 		      AddJob job = new AddJob();
-		     job.setCompanyName("annalect");
+		     job.setCompanyName("annalectual");
 		      String inputJson = super.mapToJson(job);
 		      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
 		         .contentType(MediaType.APPLICATION_JSON_VALUE)
