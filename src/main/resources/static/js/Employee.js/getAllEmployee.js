@@ -91,11 +91,11 @@ function ajaxGet() {
 	 	
 	});
 }
-
-
 $(document).ready(function() {
 	ajaxGet();
 })
+
+
 
 /* Delete */
 function delet(id){
@@ -128,7 +128,6 @@ function delet(id){
 $(document).delegate('.edit', 'click', function() {
 
 	var parent = $(this).parent().parent();
-
 	var id = parent.children("td:nth-child(1)");
 	var name = parent.children("td:nth-child(2)");
 	var email = parent.children("td:nth-child(3)");
@@ -146,7 +145,7 @@ $(document).delegate('.edit', 'click', function() {
 	name.html("<input type='text' id='name' value='" + name.html() + "'/>");
 	email.html("<input type='text' id='email' value='" + email.html() + "'/>");
 	gender.html("<input type='text' id=gender  value='"+ gender.html() +"'/>");
-let citydropdown=`<select id="city" name="city" style="padding: 4px;">
+	let citydropdown=`<select id="city" name="city" style="padding: 4px;">
                               <option value="ddun">Dehradun</option>
                               <option value="gurgaon">Gurgaon</option>
                               <option value="delhi">Delhi</option>
@@ -154,7 +153,7 @@ let citydropdown=`<select id="city" name="city" style="padding: 4px;">
                                <option value="chennai">Chennai</option>
                                <option value="raipur">Raipur</option>
    			/select>`;
-   			city.html(citydropdown);
+   		city.html(citydropdown);
 		let departmentdropdown=`<select id="department" name="department" style="padding: 4px;">
                                 <option value="it">IT</option>
                               <option value="cs">CS</option>
@@ -163,7 +162,7 @@ let citydropdown=`<select id="city" name="city" style="padding: 4px;">
                                <option value="other">Other</option>
                                
    			/select>`;
-   			department.html(departmentdropdown);
+   	department.html(departmentdropdown);
 	dob.html("<input type='date' id='dob' value='" + dob.html() + "'/>");
 	salary.html("<input type='text' id='salary' value='" + salary.html() + "'/>");
 	contactno.html("<input type='text' id='contactno' value='" + contactno.html() + "'/>");
@@ -174,7 +173,6 @@ let citydropdown=`<select id="city" name="city" style="padding: 4px;">
 
 $(document).delegate('#save', 'click', function() {
 	var parent = $(this).parent().parent();
-
 	var id = parent.children("td:nth-child(1)");
 	var name = parent.children("td:nth-child(2)");
 	var email = parent.children("td:nth-child(3)");
